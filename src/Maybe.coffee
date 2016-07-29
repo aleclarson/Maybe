@@ -8,10 +8,10 @@ Void = require "Void"
 module.exports = Validator.Type "Maybe",
 
   init: (type) ->
-    if Array.isArray type
-      type.push Void
-    else type = [ type, Void ]
-    @type = type
+    @type =
+      if Array.isArray type
+        type.concat Void
+      else [ type, Void ]
 
   name: ->
     formatType @type
