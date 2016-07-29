@@ -12,12 +12,7 @@ Void = require("Void");
 
 module.exports = Validator.Type("Maybe", {
   init: function(type) {
-    if (Array.isArray(type)) {
-      type.push(Void);
-    } else {
-      type = [type, Void];
-    }
-    return this.type = type;
+    return this.type = Array.isArray(type) ? type.concat(Void) : [type, Void];
   },
   name: function() {
     return formatType(this.type);
