@@ -1,7 +1,7 @@
 {
   "name": "Maybe",
   "version": "1.0.0",
-  "main": "js/src/Maybe",
+  "main": "js/Maybe",
   "dependencies": {
     "Validator": "aleclarson/Validator#1.1.0",
     "Void": "aleclarson/Void#1.0.0",
