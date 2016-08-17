@@ -8,13 +8,12 @@ Void = require "Void"
 module.exports = Validator.Type "Maybe",
 
   init: (type) ->
-    @type =
-      if Array.isArray type
-        type.concat Void
-      else [ type, Void ]
+    @type = type
 
   name: ->
-    formatType @type
+    if Array.isArray @type
+      formatType @type.concat Void
+    else formatType [ @type, Void ]
 
   test: (value) ->
     return yes if value is undefined
