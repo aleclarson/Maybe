@@ -1,15 +1,22 @@
 
 # Maybe v1.0.2 ![stable](https://img.shields.io/badge/stability-stable-4EBA0F.svg?style=flat)
 
-A [`Validator`](https://github.com/aleclarson/Validator) that passes only for
-values that are either `undefined` or are the `Maybe`'s expected type(s).
+The `Maybe` validator will test positive for:
+- values of `this.type`
+- `null`
+- `undefined`
+
+Built with [`Validator.Type`](https://github.com/aleclarson/Validator) to be used as a factory.
 
 ```coffee
 Maybe = require "Maybe"
 
-# Must be an array or undefined.
-ArrayMaybe = Maybe Array
+maybeArray = Maybe Array
 
-# Must be a string, boolean, or undefined.
-StringBoolMaybe = Maybe [ String, Boolean ]
+# These all return true.
+maybeArray.test []
+maybeArray.test null
+maybeArray.test undefined
+
+# Anything else returns false.
 ```
