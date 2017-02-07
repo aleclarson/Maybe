@@ -3,7 +3,8 @@ formatType = require "formatType"
 wrongType = require "wrongType"
 Validator = require "Validator"
 isType = require "isType"
-Void = require "Void"
+
+nothing = {name: "null/undefined"}
 
 module.exports = Validator.Type "Maybe",
 
@@ -11,15 +12,14 @@ module.exports = Validator.Type "Maybe",
     @type = type
 
   name: ->
-    if Array.isArray @type
-      formatType @type.concat Void
-    else formatType [ @type, Void ]
+    formatType [@type, nothing]
 
   test: (value) ->
-    return yes if value is undefined
-    return isType value, @type
+    if value?
+    then isType value, @type
+    else yes
 
   assert: (value, key) ->
-    return if value is undefined
+    return unless value?
     return if isType value, @type
-    wrongType this, key
+    return wrongType this, key
