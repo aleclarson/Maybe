@@ -6,7 +6,7 @@ isType = require "isType"
 
 nothing = {name: "null/undefined"}
 
-module.exports = Validator.Type "Maybe",
+Maybe = Validator.Type "Maybe",
 
   init: (type) ->
     @type = type
@@ -23,3 +23,5 @@ module.exports = Validator.Type "Maybe",
     return unless value?
     return if isType value, @type
     return wrongType this, key
+
+module.exports = Maybe
