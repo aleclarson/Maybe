@@ -1,5 +1,5 @@
 
-# Maybe v1.1.1 ![stable](https://img.shields.io/badge/stability-stable-4EBA0F.svg?style=flat)
+# Maybe v1.1.2 ![stable](https://img.shields.io/badge/stability-stable-4EBA0F.svg?style=flat)
 
 The `Maybe` validator will test positive for:
 - values of `this.type`
