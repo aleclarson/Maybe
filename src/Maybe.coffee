@@ -10,6 +10,7 @@ Maybe = Validator.Type "Maybe",
 
   init: (type) ->
     @type = type
+    return
 
   name: ->
     formatType [@type, nothing]
@@ -21,7 +22,11 @@ Maybe = Validator.Type "Maybe",
 
   assert: (value, key) ->
     return unless value?
-    return if isType value, @type
-    return wrongType this, key
+
+    if @type instanceof Validator
+      return error if error = @type.assert value, key
+
+    else unless isType value, @type
+      return wrongType this, key
 
 module.exports = Maybe
